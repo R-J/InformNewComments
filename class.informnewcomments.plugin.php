@@ -3,7 +3,7 @@
 $PluginInfo['InformNewComments'] = array(
     'Name' => 'Inform New Comments',
     'Description' => 'Shows inform message for new comments that has been written to the current discussion.',
-    'Version' => '0.1',
+    'Version' => '0.2',
     'RequiredApplications' => array('Vanilla' => '2.1'),
     'SettingsPermission' => 'Garden.Moderation.Manage',
     'SettingsUrl' => '/settings/informnewcoments',
@@ -100,18 +100,22 @@ class InformNewCommentsPlugin extends Gdn_Plugin {
         $Sender->SetData('Title', T('Inform New Comments Settings'));
         $Sender->AddSideMenu('dashboard/settings/plugins');
 
-        $Conf = new ConfigurationModule($Sender);
-        $Conf->Initialize(array(
+        $ConfigurationModule = new ConfigurationModule($Sender);
+        $ConfigurationModule->Initialize(array(
             'Plugins.InformNewComments.RefreshInterval' => array(
                 'Control' => 'textbox',
                 'LabelCode' => T(
-                    'InformNewCommentsSettings',
-                    'Enter the refresh interval in milliseconds<br />(The more users you have, the higher that number should be!)'
+                    'InformNewCommentsSettingsLabel',
+                    'Enter the refresh interval in milliseconds'
+                ),
+                'Description' => T(
+                    'InformNewCommentsSettingsDescription',
+                    'The more users you have, the higher that number should be!'
                 ),
                 'Default' => '60000',
                 'Options' => array('type' => 'number')
             )
         ));
-        $Conf->RenderAll();
+        $ConfigurationModule->RenderAll();
     }
 }
