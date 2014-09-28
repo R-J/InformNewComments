@@ -13,12 +13,12 @@ function informNewComments(refreshInterval, discussionID, lastCommentID, informe
     setTimeout(
         function(){informNewComments(refreshInterval, discussionID, lastCommentID, informedCommentsCount)},
         refreshInterval
-    );
+    ); 
 }
 
 $(document).ready(function(){
-    var discussionID = document.getElementById('Form_DiscussionID').getAttribute('value');
-    var lastCommentID = document.getElementById('LastCommentID').getAttribute('value');
+    var discussionID = definitions['DiscussionID'];
+    var lastCommentID = definitions['LastCommentID'];
     var refreshInterval = gdn.definition('Plugins_InformNewComments_RefreshInterval', '60000');
 
     setTimeout(
