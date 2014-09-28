@@ -3,7 +3,7 @@
 $PluginInfo['InformNewComments'] = array(
     'Name' => 'Inform New Comments',
     'Description' => 'Shows inform message for new comments that has been written to the current discussion.',
-    'Version' => '0.2',
+    'Version' => '0.3',
     'RequiredApplications' => array('Vanilla' => '2.1'),
     'SettingsPermission' => 'Garden.Moderation.Manage',
     'SettingsUrl' => '/settings/informnewcoments',
