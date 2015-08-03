@@ -5,7 +5,7 @@ function informNewComments(refreshInterval, discussionID, lastCommentID, informe
         cache: false,
         success: function(result){
             if (result) {
-                gdn.informMessage(result.Message, {'CssClass': 'Dismissable'});
+                gdn.informMessage(result.Message, {'CssClass': 'Dismissable AutoDismiss'});
                 informedCommentsCount = informedCommentsCount + result.NewCommentsCount;
             }
         }
@@ -17,9 +17,9 @@ function informNewComments(refreshInterval, discussionID, lastCommentID, informe
 }
 
 $(document).ready(function(){
-    var discussionID = definitions['DiscussionID'];
-    var lastCommentID = definitions['LastCommentID'];
-    var refreshInterval = gdn.definition('Plugins_InformNewComments_RefreshInterval', '60000');
+    var discussionID = gdn.definition('DiscussionID');
+    var lastCommentID = gdn.definition('LastCommentID');
+    var refreshInterval = gdn.definition('InformNewComments_RefreshInterval', '60000');
 
     setTimeout(
         function(){informNewComments(refreshInterval, discussionID, lastCommentID, 0)}
